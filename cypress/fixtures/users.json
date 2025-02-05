@@ -1,0 +1,30 @@
+{
+    "login": {
+        "name": "João",
+        "email": "joao@dead.com",
+        "password": "pwd123"
+    },
+    "inv_pass": {
+        "email": "mario@email.com",
+        "password": "123456"
+    },
+    "email_404": {
+        "email": "a@email.com",
+        "password": "123456"
+    },
+    "create": {
+        "name": "Luigi",
+        "email": "luigi@email.com",
+        "password": "pwd123"
+    },
+    "dup_email": {
+        "name": "Moacir",
+        "email": "moacir@coldmail.com",
+        "password": "pwd123"
+    },
+    "required": {
+        "name": "Jacinto",
+        "email": "jacinto@hmail.com",
+        "password": "pwd123"
+    }
+}

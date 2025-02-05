@@ -1,0 +1,27 @@
+{
+    "remove": {
+        "user": {
+            "name": "Eulália",
+            "email": "eulalia@terra.com.br",
+            "password": "pwd123"
+        },
+        "task": {
+            "name": "Regar as plantas",
+            "tags": [
+                "orquídeas",
+                "hortensias",
+                "sapatinhos"
+            ]
+        }
+    },
+    "not_found": {
+        "user": {
+            "name": "Timóteo",
+            "email": "tim@ig.com.br",
+            "password": "pwd123"
+        },
+        "task": {
+            "name": "Levar a cadeira para a calçada"
+        }
+    }
+}
