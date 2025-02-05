@@ -4,7 +4,6 @@ describe('POST /tasks', () => {
             this.tasks = tasks
         })
     })
-
     context('register a new task', function () {
         beforeEach(function () {
             const { user, task } = this.tasks.dup
@@ -17,12 +16,10 @@ describe('POST /tasks', () => {
                     expect(response.status).to.eq(204)
                 })
         })
-
         it('post task', function () {
             const { user, task } = this.tasks.create
             cy.task('removeUser', user.email)
             cy.postUser(user)
-
             cy.postSession(user)
                 .then(userResponse => {
                     cy.task('removeTask', task.name, user.email)
@@ -38,7 +35,6 @@ describe('POST /tasks', () => {
                         })
                 })
         })
-
         afterEach(function () {
             const { user, task } = this.tasks.create
             // get message
@@ -51,19 +47,14 @@ describe('POST /tasks', () => {
                     expect(response.body[0].payload).to.include(user.email)
                 })
         })
-
     })
-
     it('duplicate task', function () {
         const { user, task } = this.tasks.dup
-
         cy.task('removeUser', user.email)
         cy.postUser(user)
-
         cy.postSession(user)
             .then(userResponse => {
                 cy.task('removeTask', task.name, user.email)
-
                 cy.postTask(task, userResponse.body.token)
                 cy.postTask(task, userResponse.body.token)
                     .then(response => {
@@ -72,5 +63,4 @@ describe('POST /tasks', () => {
                     })
             })
     })
-
 })

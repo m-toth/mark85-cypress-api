@@ -4,15 +4,11 @@ describe('GET /tasks', () => {
             this.tasks = tasks
         })
     });
-
-
     it('get my task', function () {
         const { user, tasks } = this.tasks.list
         cy.task('removeTasksLike', 'Estud4r')
-
         cy.task('removeUser', user.email)
         cy.postUser(user)
-
         cy.postSession(user)
             .then(respUser => {
                 tasks.forEach(function (taskNum) {
@@ -26,20 +22,18 @@ describe('GET /tasks', () => {
             })
     })
 })
+
 describe('GET /tasks/:id', () => {
     beforeEach(function () {
         cy.fixture('tasks/get').then(function (tasks) {
             this.tasks = tasks
         })
     });
-
     it('get unique task', function () {
         const { user, task } = this.tasks.unique
-
         cy.task('removeTask', task.name, user.email)
         cy.task('removeUser', user.email)
         cy.postUser(user)
-
         cy.postSession(user)
             .then(respUser => {
                 cy.postTask(task, respUser.body.token)
@@ -53,14 +47,11 @@ describe('GET /tasks/:id', () => {
     })
     it('task not found', function () {
         const { user, task } = this.tasks.not_found
-
         cy.task('removeTask', task.name, user.email)
         cy.task('removeUser', user.email)
         cy.postUser(user)
-
         cy.postSession(user)
             .then(respUser => {
-
                 cy.postTask(task, respUser.body.token)
                     .then(respTask => {
                         cy.deleteTask(respTask.body._id, respUser.body.token)
@@ -75,4 +66,3 @@ describe('GET /tasks/:id', () => {
             })
     })
 })
-

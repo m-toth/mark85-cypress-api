@@ -4,14 +4,11 @@ describe('DELETE /tasks/:id', () => {
             this.tasks = tasks
         })
     });
-
     it('remove a task', function () {
         const { user, task } = this.tasks.remove
-
         cy.task('removeTask', task.name, user.email)
         cy.task('removeUser', user.email)
         cy.postUser(user)
-
         cy.postSession(user)
             .then(respUser => {
                 cy.postTask(task, respUser.body.token)
@@ -25,14 +22,11 @@ describe('DELETE /tasks/:id', () => {
     })
     it('task not found', function () {
         const { user, task } = this.tasks.not_found
-
         cy.task('removeTask', task.name, user.email)
         cy.task('removeUser', user.email)
         cy.postUser(user)
-
         cy.postSession(user)
             .then(respUser => {
-
                 cy.postTask(task, respUser.body.token)
                     .then(respTask => {
                         cy.deleteTask(respTask.body._id, respUser.body.token)
